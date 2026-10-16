@@ -1,0 +1,14 @@
+Test set results (12,735 images)
+
+              precision    recall  f1-score   support
+
+       awake       0.99      0.99      0.99      6443
+      sleepy       0.99      0.99      0.99      6292
+
+    accuracy                           0.99     12735
+   macro avg       0.99      0.99      0.99     12735
+weighted avg       0.99      0.99      0.99     12735
+
+Confusion matrix (rows = true, columns = predicted)
+[[6373   70]
+ [  87 6205]]
