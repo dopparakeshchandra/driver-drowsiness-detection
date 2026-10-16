@@ -34,4 +34,4 @@ Full output: see `results.txt`.
 Images from the same person may appear in train and test, so scores may be higher than on new people. Real-world testing on self-recorded videos is planned.
 
 ## Tech
-Python, TensorFlow/Keras, OpenCV, scikit-learn
+Python, TensorFlow/Keras, OpenCV, scikit-learn 
