@@ -40,5 +40,5 @@ Python, TensorFlow/Keras, OpenCV, scikit-learn
 Baseline vs your CNN:
 
 Model	                   Test accuracy	Sleepy recall	Missed sleepy	False alarms
-HOG + Logistic Regression	  95.24%	         95.6%	        276	            330
+HOG + Logistic Regression	    95.24%	         95.6%	        276	            330
 Simple CNN	                  98.77%	         98.6%	        87	            70
