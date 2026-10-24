@@ -8,3 +8,5 @@ data/
 data_split/
 *.keras
 face_landmarker.task
+my_videos
+labels.csv

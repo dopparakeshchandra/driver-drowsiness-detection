@@ -1,0 +1,68 @@
+Frames used: 152 (closed=50, open=102)
+  video1: closed=45, open=60
+  video2: closed=5, open=42
+
+=== no CLAHE ===
+thr=0.5
+   ALL     : acc 79% recall 100% falsealarm 31%
+   video1  : acc 74% recall 100% falsealarm 45%
+   video2  : acc 89% recall 100% falsealarm 12%
+   normal  : acc 74% recall 100% falsealarm 45%
+   dim     : acc 89% recall 100% falsealarm 12%
+thr=0.6
+   ALL     : acc 88% recall 100% falsealarm 19%
+   video1  : acc 85% recall 100% falsealarm 27%
+   video2  : acc 94% recall 100% falsealarm 7%
+   normal  : acc 85% recall 100% falsealarm 27%
+   dim     : acc 94% recall 100% falsealarm 7%
+thr=0.7
+   ALL     : acc 90% recall 100% falsealarm 15%
+   video1  : acc 89% recall 100% falsealarm 20%
+   video2  : acc 94% recall 100% falsealarm 7%
+   normal  : acc 89% recall 100% falsealarm 20%
+   dim     : acc 94% recall 100% falsealarm 7%
+thr=0.8
+   ALL     : acc 91% recall 96% falsealarm 12%
+   video1  : acc 90% recall 100% falsealarm 17%
+   video2  : acc 91% recall 60% falsealarm 5%
+   normal  : acc 90% recall 100% falsealarm 17%
+   dim     : acc 91% recall 60% falsealarm 5%
+thr=0.9
+   ALL     : acc 95% recall 96% falsealarm 6%
+   video1  : acc 95% recall 100% falsealarm 8%
+   video2  : acc 94% recall 60% falsealarm 2%
+   normal  : acc 95% recall 100% falsealarm 8%
+   dim     : acc 94% recall 60% falsealarm 2%
+
+=== CLAHE ===
+thr=0.5
+   ALL     : acc 96% recall 98% falsealarm 5%
+   video1  : acc 98% recall 100% falsealarm 3%
+   video2  : acc 91% recall 80% falsealarm 7%
+   normal  : acc 98% recall 100% falsealarm 3%
+   dim     : acc 91% recall 80% falsealarm 7%
+thr=0.6
+   ALL     : acc 97% recall 96% falsealarm 3%
+   video1  : acc 98% recall 98% falsealarm 2%
+   video2  : acc 94% recall 80% falsealarm 5%
+   normal  : acc 98% recall 98% falsealarm 2%
+   dim     : acc 94% recall 80% falsealarm 5%
+thr=0.7
+   ALL     : acc 97% recall 96% falsealarm 2%
+   video1  : acc 99% recall 98% falsealarm 0%
+   video2  : acc 94% recall 80% falsealarm 5%
+   normal  : acc 99% recall 98% falsealarm 0%
+   dim     : acc 94% recall 80% falsealarm 5%
+thr=0.8
+   ALL     : acc 95% recall 88% falsealarm 2%
+   video1  : acc 96% recall 91% falsealarm 0%
+   video2  : acc 91% recall 60% falsealarm 5%
+   normal  : acc 96% recall 91% falsealarm 0%
+   dim     : acc 91% recall 60% falsealarm 5%
+thr=0.9
+   ALL     : acc 89% recall 70% falsealarm 1%
+   video1  : acc 89% recall 73% falsealarm 0%
+   video2  : acc 91% recall 40% falsealarm 2%
+   normal  : acc 89% recall 73% falsealarm 0%
+   dim     : acc 91% recall 40% falsealarm 2%
+

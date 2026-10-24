@@ -1,0 +1,10 @@
+USE_CLAHE=False, THRESH=0.5
+
+OVERALL: frames=152, face found=100%, accuracy=78.9%, closed-eye recall=100.0%, false alarm on open=31.4%
+
+lighting=normal: frames=105, face found=100%, accuracy=74.3%, closed-eye recall=100.0%, false alarm on open=45.0%
+lighting=dim: frames=47, face found=100%, accuracy=89.4%, closed-eye recall=100.0%, false alarm on open=11.9%
+
+glasses=no: frames=101, face found=100%, accuracy=79.2%, closed-eye recall=100.0%, false alarm on open=31.8%
+glasses=yes: frames=51, face found=100%, accuracy=78.4%, closed-eye recall=100.0%, false alarm on open=30.6%
+
