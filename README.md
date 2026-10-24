@@ -1,9 +1,14 @@
 # Driver Drowsiness Detection
 
-Classifies eye images as **awake** or **sleepy** using deep learning (TensorFlow/Keras). Three approaches are compared: a classical baseline, a custom CNN and MobileNetV2 transfer learning. A real-time webcam alert system is in progress.
+Real-time driver drowsiness detection from eye images using deep learning (TensorFlow/Keras). Three approaches are compared (a classical baseline, a custom CNN and MobileNetV2 transfer learning), and the best model powers a webcam app that raises an alert when the eyes stay closed.
+
+## Demo
+Add a screenshot or GIF of the webcam app here (`demo.png` or `demo.gif`).
 
 ## Dataset
-- 84,898 cropped eye images, two classes: awake and sleepy
+- **MRL Eye Dataset** (Media Research Lab, VSB-Technical University of Ostrava): https://mrl.cs.vsb.cz/eyedataset.html
+- Kaggle copy used (awake/sleepy folders): [paste your Kaggle link here]
+- 84,898 infrared eye images from 37 people, two classes: awake (open eyes) and sleepy (closed eyes)
 - Split 70/15/15 (stratified, random_state=42), classes balanced
 
 | Split | Awake | Sleepy | Total |
@@ -35,10 +40,26 @@ Classifies eye images as **awake** or **sleepy** using deep learning (TensorFlow
 **Key findings**
 - Both deep models clearly beat the baseline.
 - The custom CNN cut total errors by about 74% (606 to 157) and missed sleepy cases by about 68% (276 to 87) compared with the baseline.
-- The custom CNN slightly outperformed MobileNetV2 here, likely because the dataset is large and the images are small, uniform eye crops. MobileNetV2 was still improving at the end of fine-tuning.
+- The custom CNN slightly outperformed MobileNetV2, likely because the dataset is large and the images are small, uniform eye crops. MobileNetV2 was still improving at the end of fine-tuning.
 - Recall for the sleepy class is the key safety metric, since a missed sleepy driver is the dangerous error.
 
 Full outputs: `results.txt`, `baseline_results.txt`, `results_mobilenet.txt`
+
+## Real-time app
+- OpenCV reads the webcam, MediaPipe Face Landmarker finds the eyes, and the custom CNN classifies each eye crop as open or closed.
+- If the eyes stay closed for about 2 seconds, the app shows a warning and plays a beep.
+- Speed: about 9.5 FPS on a laptop CPU (no GPU).
+
+## How to run
+```
+pip install -r requirements.txt
+curl -L -o face_landmarker.task https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+python split_data.py
+python train_cnn.py
+python evaluate.py
+python realtime_app.py
+```
+Press `q` to quit the webcam app. The dataset and trained models are not stored in this repository.
 
 ## Project files
 | File | Purpose |
@@ -47,24 +68,22 @@ Full outputs: `results.txt`, `baseline_results.txt`, `results_mobilenet.txt`
 | `train_cnn.py`, `evaluate.py` | Train and evaluate the custom CNN |
 | `baseline.py` | HOG + Logistic Regression baseline |
 | `train_mobilenet.py`, `evaluate_mobilenet.py` | MobileNetV2 transfer learning |
-
-## How to run
-```
-pip install -r requirements.txt
-python split_data.py
-python train_cnn.py
-python evaluate.py
-```
+| `realtime_app.py` | Real-time webcam detection with alert |
+| `web_cam_test.py` | Webcam check |
 
 ## Limitations
-- Images from the same person may appear in train, validation and test, so these scores may be higher than on unseen people.
-- Evaluation so far is on a public dataset only. Testing on self-recorded videos in different lighting, with and without glasses, is planned.
+- The dataset has 37 people and the split was random, so images of the same person may appear in train, validation and test. These scores may be higher than on unseen people.
+- The model was trained on infrared eye images, while a normal webcam gives color images. Real-world accuracy can differ from the test score.
+- Real-time performance so far is only checked informally on one person.
 
 ## Roadmap
-- [ ] Real-time webcam app (OpenCV + MediaPipe) with an alert after about 2 seconds of closed eyes
-- [ ] FPS measurement
-- [ ] Testing on self-recorded videos and error analysis
+- [x] Dataset split and baseline
+- [x] Custom CNN and MobileNetV2 comparison
+- [x] Real-time webcam app with alert
+- [x] FPS measurement (about 9.5 FPS on CPU)
+- [ ] Testing on self-recorded videos (different lighting, glasses) with error analysis
+- [ ] Subject-wise split for a stricter evaluation
 - [ ] Deployed demo and demo video
 
 ## Tech
-Python, TensorFlow/Keras, OpenCV, scikit-learn, scikit-image, NumPy
+Python, TensorFlow/Keras, OpenCV, MediaPipe, scikit-learn, scikit-image, NumPy
